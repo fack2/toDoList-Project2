@@ -70,8 +70,10 @@ var todoFunctions = {
 
     // return arrx;
   },
-  sortTodos: function(todos, sortFunction) {
+  sortTodos: function(todos) {
     var newArray = [...todos];
+    const newSort = newArray.sort((a, b) => (a.checked > b.checked ? 1 : -1));
+    console.log("newSort", newSort);
     return newArray.sort((a, b) => (a.checked > b.checked ? 1 : -1));
 
     // stretch goal! Do this last
