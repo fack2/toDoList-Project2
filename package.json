@@ -1,12 +1,24 @@
 {
-  "name": "project2",
+  "name": "toDoList-Project2",
   "version": "1.0.0",
   "description": "",
   "main": "dom.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"|
+    "test": "tape test.js |tap-spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fack2/toDoList-Project2.git"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fack2/toDoList-Project2/issues"
+  },
+  "homepage": "https://github.com/fack2/toDoList-Project2#readme",
+  "devDependencies": {
+    "tap-spec": "^5.0.0",
+    "tape": "^4.10.2"
+  }
 }

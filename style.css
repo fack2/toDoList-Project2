@@ -1,0 +1,31 @@
+.title,
+form,
+li {
+  text-align: center;
+}
+
+input[type="text"] {
+  background-color: rgba(173, 173, 167, 0.966);
+  border: rebeccapurple 2px solid;
+  height: 27px;
+  width: 500px;
+  border-radius: 10px;
+  padding-left: 2px;
+}
+
+input[type="submit"] {
+  background-color: rgb(137, 231, 94);
+  border: rgb(216, 98, 51) 2px solid;
+  height: 35px;
+  width: 100px;
+  border-radius: 10px;
+  text-shadow: 0.5px 0.5px 0.5px;
+  font-weight: bold;
+}
+
+h1 {
+  font-family: "Leckerli One", cursive;
+  font-size: 5em;
+  color: rgb(233, 68, 68);
+  font-weight: 100;
+}
