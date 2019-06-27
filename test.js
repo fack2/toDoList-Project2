@@ -49,6 +49,29 @@ test("check element ", function(t) {
   t.deepEqual(actual, expected, "checkeeed");
   t.end();
 });
+test("edit", function(t) {
+  // const todosList = [
+  //   { id: -3, description: "first todo" },
+  //   { id: -2, description: "a" }
+  // ];
+  var actual = logic.editTodos(
+    [
+      { id: -3, description: "first todo", checked: true },
+      { id: -2, description: "a", checked: false }
+    ],
+    -3,
+    "firsttt"
+  );
+  var expected = [
+    { id: -3, description: "firsttt", checked: true },
+    { id: -2, description: "a", checked: false }
+  ];
+  console.log("actual", actual);
+  console.log("expected", expected);
+
+  t.deepEqual(actual, expected, "edittts");
+  t.end();
+});
 test("sort the list", function(t) {
   // const todosList = [
   //   { id: -3, description: "first todo" },

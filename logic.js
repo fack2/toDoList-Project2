@@ -24,10 +24,14 @@ var todoFunctions = {
   },
 
   addTodo: function(todos, newTodo) {
-    const arrx = todos.concat([]);
+    if (newTodo.description !== "") {
+      const arrx = todos.concat([]);
 
-    arrx.push(newTodo);
-    return arrx;
+      arrx.push(newTodo);
+      return arrx;
+    } else {
+      alert("cannot add empty element");
+    }
     // should leave the input argument todos unchanged (you can usecloneArrayOfObjects)
     // returns a new array, it should contain todos with the newTodo added to the end.
     // add an id to the newTodo. You can use the generateId function to create an id.
@@ -80,8 +84,23 @@ var todoFunctions = {
     // should leave the input arguement todos unchanged (you can use cloneArrayOfObjects)
     // sortFunction will have same signature as the sort function in array.sort
     // hint: array.slice, array.sort
+  },
+
+  editTodos: function(todos, editId, newText) {
+    var arr = todos.map(todo => {
+      if (todo.id == editId) {
+        todo.description = newText;
+      }
+      return todo;
+    });
+    return arr;
+    // stretch goal! Do this last
+    // should leave the input arguement todos unchanged (you can use cloneArrayOfObjects)
+    // sortFunction will have same signature as the sort function in array.sort
+    // hint: array.slice, array.sort
   }
 };
+
 
 // Why is this if statement necessary?
 // The answer has something to do with needing to run code both in the browser and in Node.js
