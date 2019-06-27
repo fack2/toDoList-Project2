@@ -7,9 +7,9 @@
   var addTodoForm = document.getElementById("add-todo");
 
   var state = [
-    { id: -3, description: "first todo", checked: false },
-    { id: -2, description: "second todo", checked: false },
-    { id: -1, description: "third todo", checked: false }
+    // { id: -3, description: "first todo", checked: false },
+    // { id: -2, description: "second todo", checked: false },
+    // { id: -1, description: "third todo", checked: false }
   ]; // this is our initial todoList
 
   var SubmitButton = document.querySelector("#submit");
@@ -25,25 +25,32 @@
     update(newStatex);
   });
   var btn = document.createElement("BUTTON"); // Create a <button> element
-
+     btn.className="sort--btn";
   btn.innerHTML = "Sort your to do :)"; // Insert text
   document.body.appendChild(btn);
   // document.btn.style.color = "red";
   // This function takes a todo, it returns the DOM node representing that todo
   var createTodoNode = function(todo) {
+    var counter=0;
     var todoNode = document.createElement("li");
     todoNode.setAttribute("id", todo.id);
+    todoNode.label="item ".counter++;
 
     document.getElementById("todo-container").appendChild(todoNode);
     // you will need to use addEventListener
     //input (checkbox)
     var checkBox = document.createElement("input"); //checkbx
     checkBox.setAttribute("type", "checkbox");
+    // checkBox.
     checkBox.checked = todo.checked;
     var editButton = document.createElement("button"); //edit button
         editButton.className="edit--btn";
+        editButton.setAttribute("aria-label","edit_btn");
+        // editButton.name=edit_btn;
     var label = document.createElement("label"); //label
     //input (text)
+    label.setAttribute("for",todo.id);
+    
     label.innerText = todo.description;
 
     //button.delete
@@ -52,7 +59,7 @@
     var deleteButton = document.createElement("button");
     //delete button
     // add span holding description
-
+     
     // this adds the delete button
     todoNode.appendChild(checkBox);
 
@@ -60,6 +67,8 @@
     // todoNode.appendChild(deleteButton);
     var deleteButtonNode = document.createElement("button");
         deleteButtonNode.className="delete--btn";
+        deleteButtonNode.setAttribute("aria-label","delete_btn");
+        // deleteButtonNode.name=delete_btn;
     document.getElementById("todo-container").appendChild(todoNode);
     deleteButtonNode.addEventListener("click", function(event) {
       var newState = todoFunctions.deleteTodo(state, todo.id);
@@ -72,18 +81,20 @@
 
     editButton.addEventListener("click", function(event) {
       //  const liElement = document.getElementById(todo.id);
-      if (counter % 2 != 0) {
-        label.contentEditable = "true";
-        //todo.description.contentEditable = true;
-      } else {
+      var textEdit = label.innerText;
+      var editArr = todoFunctions.editTodos(state, todo.id, textEdit);
+      if (label.contentEditable == "true") {
         label.contentEditable = "false";
-        //todo.description.contentEditable = false;
+        label.focus();
+        update(editArr);
+      } else {
+        label.contentEditable = "true";
       }
-      counter++;
     });
 
     todoNode.appendChild(editButton);
     btn.addEventListener("click", function(event) {
+
       var newState = todoFunctions.sortTodos(state);
       update(newState);
     });
