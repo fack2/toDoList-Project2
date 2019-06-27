@@ -54,16 +54,14 @@ test("sort the list", function(t) {
   //   { id: -3, description: "first todo" },
   //   { id: -2, description: "a" }
   // ];
-  var actual =
-    logic.sortTodos[
-      ({ id: -3, description: "first todo", checked: true },
-      { id: -2, description: "a", checked: false })
-    ];
-  var expected =
-    logic.sortTodos[
-      ({ id: -3, description: "first todo", checked: true },
-      { id: -2, description: "a", checked: false })
-    ];
+  var actual = logic.sortTodos([
+    { id: -3, description: "first todo", checked: true },
+    { id: -2, description: "a", checked: false }
+  ]);
+  var expected = [
+    { id: -2, description: "a", checked: false },
+    { id: -3, description: "first todo", checked: true }
+  ];
   console.log("actual", actual);
   console.log("expected", expected);
 
