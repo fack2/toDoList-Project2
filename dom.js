@@ -40,11 +40,12 @@
     var checkBox = document.createElement("input"); //checkbx
     checkBox.setAttribute("type", "checkbox");
     checkBox.checked = todo.checked;
-    var editButton = document.createElement("button");
-    //edit button
+    var editButton = document.createElement("button"); //edit button
+        editButton.className="edit--btn";
     var label = document.createElement("label"); //label
     //input (text)
     label.innerText = todo.description;
+
     //button.delete
     todoNode.appendChild(label);
 
@@ -58,7 +59,7 @@
     // todoNode.appendChild(editButton);
     // todoNode.appendChild(deleteButton);
     var deleteButtonNode = document.createElement("button");
-
+        deleteButtonNode.className="delete--btn";
     document.getElementById("todo-container").appendChild(todoNode);
     deleteButtonNode.addEventListener("click", function(event) {
       var newState = todoFunctions.deleteTodo(state, todo.id);
