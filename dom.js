@@ -24,21 +24,31 @@
     var newStatex = todoFunctions.addTodo(state, newObj);
     update(newStatex);
   });
+  var btn = document.createElement("BUTTON"); // Create a <button> element
+
+  btn.innerHTML = "Sort your to do :)"; // Insert text
+  document.body.appendChild(btn);
+  // document.btn.style.color = "red";
   // This function takes a todo, it returns the DOM node representing that todo
   var createTodoNode = function(todo) {
     var todoNode = document.createElement("li");
+    todoNode.setAttribute("id", todo.id);
 
-    var elementsAdd = todo.description;
-    var textnode = document.createTextNode(elementsAdd);
-    todoNode.appendChild(textnode);
     document.getElementById("todo-container").appendChild(todoNode);
     // you will need to use addEventListener
     //input (checkbox)
     var checkBox = document.createElement("input"); //checkbx
     checkBox.setAttribute("type", "checkbox");
+    checkBox.checked = todo.checked;
     var editButton = document.createElement("button"); //edit button
         editButton.className="edit--btn";
+    var label = document.createElement("label"); //label
+    //input (text)
+    label.innerText = todo.description;
+
     //button.delete
+    todoNode.appendChild(label);
+
     var deleteButton = document.createElement("button");
     //delete button
     // add span holding description
@@ -61,17 +71,27 @@
     var counter = 1;
 
     editButton.addEventListener("click", function(event) {
+      //  const liElement = document.getElementById(todo.id);
       if (counter % 2 != 0) {
-        // document.getElementById("li").contentEditable = "true";
-        todo.description.contentEditable = true;
+        label.contentEditable = "true";
+        //todo.description.contentEditable = true;
       } else {
-        // document.getElementById("li").contentEditable = "false";
-        todo.description.contentEditable = false;
+        label.contentEditable = "false";
+        //todo.description.contentEditable = false;
       }
       counter++;
     });
 
     todoNode.appendChild(editButton);
+    btn.addEventListener("click", function(event) {
+      var newState = todoFunctions.sortTodos(state);
+      update(newState);
+    });
+    checkBox.addEventListener("click", function(event) {
+      var newState = todoFunctions.markTodo(state, todo.id);
+
+      update(newState);
+    });
     // add markTodo button
     // <button id="delete" onclick="deleteButtonNode()">
     //   Try it
